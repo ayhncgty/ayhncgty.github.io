@@ -1,16 +1,17 @@
 /* ===== Base ===== */
 :root {
-    --bg: #0b0f17;
-    --panel: #111827;
-    --card: #0f172a;
-    --text: #e5e7eb;
-    --muted: #a3a3a3;
-    --border: rgba(255, 255, 255, .08);
-    --accent: #60a5fa;
-    /* soft academic blue */
-    --shadow: 0 18px 50px rgba(0, 0, 0, .35);
+    --bg: #f2f4f8;
+    --panel: #ffffff;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: rgba(17, 24, 39, .10);
+    --accent: #2563eb;
+    /* academic blue */
+    --shadow: 0 12px 28px rgba(17, 24, 39, .10);
     --radius: 16px;
 }
+
 
 * {
     box-sizing: border-box;
@@ -23,12 +24,14 @@ html {
 body {
     margin: 0;
     color: var(--text);
-    background: radial-gradient(1200px 700px at 15% -10%, rgba(96, 165, 250, .25), transparent 60%),
-        radial-gradient(900px 600px at 95% 10%, rgba(34, 197, 94, .18), transparent 55%),
+    background:
+        radial-gradient(1100px 650px at 10% -10%, rgba(37, 99, 235, .10), transparent 60%),
+        radial-gradient(900px 600px at 95% 10%, rgba(16, 185, 129, .08), transparent 55%),
         var(--bg);
     font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     line-height: 1.55;
 }
+
 
 a {
     color: var(--text);
@@ -71,10 +74,11 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(11, 15, 23, .75);
+    background: rgba(247, 248, 251, .85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
 }
+
 
 .header-inner {
     display: flex;
@@ -165,7 +169,7 @@ h1 {
 
 .lead {
     margin: 0 0 16px;
-    color: rgba(229, 231, 235, .92);
+    color: rgba(17, 24, 39, .90);
     font-size: 16px;
 }
 
@@ -177,12 +181,16 @@ h1 {
 
 /* ===== Cards ===== */
 .card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .03));
-    border: 1px solid var(--border);
+    background: #ffffff;
+    border: 1px solid rgba(17, 24, 39, .14);
     border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 18px;
+    box-shadow:
+        0 1px 0 rgba(17, 24, 39, .04),
+        0 10px 25px rgba(17, 24, 39, .10);
+    padding: 20px;
 }
+
+
 
 .grid {
     display: grid;
@@ -197,7 +205,7 @@ h1 {
 
 .card p {
     margin: 0 0 12px;
-    color: rgba(229, 231, 235, .85);
+    color: rgba(17, 24, 39, .82);
     font-size: 14px;
 }
 
@@ -210,12 +218,13 @@ h1 {
 
 .tag {
     font-size: 12px;
-    color: rgba(229, 231, 235, .9);
-    background: rgba(96, 165, 250, .12);
-    border: 1px solid rgba(96, 165, 250, .25);
+    color: rgba(17, 24, 39, .85);
+    background: rgba(37, 99, 235, .08);
+    border: 1px solid rgba(37, 99, 235, .18);
     padding: 5px 8px;
     border-radius: 999px;
 }
+
 
 .card-links {
     display: flex;
@@ -264,6 +273,26 @@ h1 {
     border-color: rgba(96, 165, 250, .35);
 }
 
+/* Teaching card: increase contrast without affecting other cards */
+.teaching-card {
+    background: #ffffff;
+    border: 1px solid rgba(17, 24, 39, .16);
+    box-shadow:
+        0 1px 0 rgba(17, 24, 39, .05),
+        0 12px 28px rgba(17, 24, 39, .12);
+}
+
+.teaching-card .clean-list>li {
+    color: #111827;
+    font-weight: 500;
+}
+
+.teaching-card .clean-list ul li {
+    color: rgba(17, 24, 39, .85);
+    font-weight: 400;
+}
+
+
 /* ===== Photo placeholder ===== */
 .photo-card {
     padding: 16px;
@@ -289,6 +318,15 @@ h1 {
     font-size: 13px;
     color: var(--muted);
 }
+
+.photo-image {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    object-fit: cover;
+}
+
 
 /* ===== Publications ===== */
 .pub-list {
@@ -379,6 +417,119 @@ h1 {
 .footer-dot {
     opacity: .6;
 }
+
+/* Publications: match Teaching (one card, clean entries) */
+.publications-card .pub {
+    background: transparent;
+    /* remove individual box fill */
+    border: none;
+    /* remove individual box border */
+    padding: 12px 0;
+    /* vertical spacing */
+    border-radius: 0;
+}
+
+.publications-card .pub+.pub {
+    border-top: 1px solid rgba(17, 24, 39, .10);
+    /* subtle divider */
+}
+
+.publications-card .pub-title {
+    font-weight: 650;
+}
+
+.publications-card .pub-authors,
+.publications-card .pub-venue {
+    color: rgba(17, 24, 39, .75);
+}
+
+.publications-card .pub-links a {
+    color: rgba(17, 24, 39, .70);
+}
+
+.publications-card .pub-links a:hover {
+    color: var(--accent);
+}
+
+/* Talks: two-column inside one card (matches Teaching/Publications style) */
+.talks-card {
+    padding: 18px 20px;
+}
+
+.talks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.talks-subhead {
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 650;
+}
+
+.talks-list {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.talks-list li {
+    margin: 10px 0;
+    color: rgba(17, 24, 39, .88);
+}
+
+.talk-meta {
+    color: rgba(17, 24, 39, .65);
+    font-size: 13px;
+}
+
+@media (max-width: 900px) {
+    .talks-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Service card: improve contrast and readability */
+.service-card {
+    background: #ffffff;
+    border: 1px solid rgba(17, 24, 39, .16);
+    box-shadow:
+        0 1px 0 rgba(17, 24, 39, .05),
+        0 12px 28px rgba(17, 24, 39, .12);
+}
+
+/* Ensure readable text hierarchy inside Service */
+.service-card .clean-list>li {
+    color: #111827;
+    font-weight: 500;
+}
+
+.service-card em {
+    color: rgba(17, 24, 39, .85);
+}
+
+.service-card .service-meta {
+    display: block;
+    margin-top: 6px;
+    color: rgba(17, 24, 39, .70);
+    font-size: 13px;
+}
+
+.service-card .clean-list li {
+    margin: 6px 0;
+}
+
+.upcoming {
+    margin-left: 6px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #2563eb;
+    background: rgba(37, 99, 235, .10);
+    border: 1px solid rgba(37, 99, 235, .25);
+    border-radius: 6px;
+}
+
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
